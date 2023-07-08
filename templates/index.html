@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the Album</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #191414;
+            color: #FFFFFF;
+        }
+    
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px;
+            text-align: center;
+            background-color: #1DB954;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        h1 {
+            margin-bottom: 30px;
+            color: #FFFFFF;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    
+        .input-container {
+            margin-bottom: 30px;
+        }
+    
+        .input-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #FFFFFF;
+            font-size: 18px;
+        }
+    
+        .input-field,
+        .submit-button {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #191414;
+        }
+    
+        .input-field::placeholder {
+            color: #777777;
+        }
+    
+        .submit-button {
+            background-color: #1ED760;
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+    
+        .submit-button:hover {
+            background-color: #18B955;
+        }
+    </style>
+        
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Album Guesser</h1>
+        <form action="/play" method="POST" class="input-container">
+            <label for="artist_name" class="input-label">Enter an artist name:</label>
+            <input type="text" id="artist_name" name="artist_name" class="input-field" required><br>
+            <input type="submit" value="Play" class="submit-button">
+        </form>
+    </div>
+</body>
+</html>

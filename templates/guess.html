@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the Album - Guess</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #191414;
+            color: #FFFFFF;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            text-align: center;
+            background-color: #1DB954;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #FFFFFF;
+        }
+
+        .song-list {
+            margin-bottom: 20px;
+            list-style-type: none;
+            padding: 0;
+            font-size: 20px;
+            color: #FFFFFF;
+            text-align: left;
+        }
+
+        .song-list li {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .guess-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .guess-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            background-color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            color: #191414;
+        }
+
+        .submit-button {
+            background-color: #1ED760;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .submit-button:hover {
+            background-color: #18B955;
+        }
+
+        .artist-image {
+            margin-top: 20px;
+        }
+
+        .artist-image .image {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 50%;
+        }
+
+        .restart-button {
+            background-color: #1ED760;
+            color: #FFFFFF;
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .restart-button:hover {
+            background-color: #18B955;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="/" method="GET">
+            <input type="submit" value="Restart" class="restart-button">
+        </form>
+
+        <h1>Album Guesser</h1>
+
+        <ul class="song-list">
+            {% for song in songs %}
+                <li>
+                    Song {{ loop.index }}: {{ song['name'] }}
+                    {% if song['media_player_url'] %}
+                        <br>
+                        <audio controls>
+                            <source src="{{ song['media_player_url'] }}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        {% if artist_image %}
+            <div class="artist-image">
+                <img src="{{ artist_image }}" alt="Artist Image" class="image">
+            </div>
+        {% endif %}
+
+        <form action="/guess" method="POST" class="guess-form">
+            <p style="color: red;">{{ result }}</p>
+            <label for="album_name">Enter your guess for the album:</label><br>
+            <input type="text" id="album_name" name="user_guess" class="guess-input" required><br>
+            <input type="hidden" name="album_name" value="{{ album_name }}">
+            <input type="hidden" name="guesses_left" value="{{ guesses_left }}">
+            <input type="submit" value="Submit" class="submit-button">
+        </form>
+
+        {% if guesses_left == 3 %}
+            <p>Guesses Left: 3</p>
+        {% elif guesses_left == 2 %}
+            <p>Guesses Left: 2</p>
+        {% elif guesses_left == 1 %}
+            <p>Guesses Left: 1</p>
+        {% endif %}
+    </div>
+</body>
+</html>
