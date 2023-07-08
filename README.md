@@ -16,6 +16,7 @@ Album Guesser is a web-based guessing game where players have to guess the corre
 
 ## Requirements
 
+- A valid Spotify account
 - Python 3.7 or higher
 - Flask
 - FuzzyWuzzy
