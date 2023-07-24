@@ -28,3 +28,16 @@ Album Guesser is a web-based guessing game where players have to guess the corre
 1. Clone the repository:
    ```shell
    git clone https://github.com/your-username/Album_Guesser.git
+
+
+
+## Walkthrough
+
+1. Clone the repository and get the Album-Guesser Game running
+2. If you are trying to guess an album for the artist: _Lil Uzi Vert_, this is the screen you will see
+![Image](Images/Index.png)
+4. As you click Play, this is what you will see(remember that for some artists, the preview isn't available, so it isn't on the page)
+![Image](Images/Guess.png)
+5. If you guess the album correctly, you will get to this screen
+![Image](Images/Result.png) 
+
