@@ -28,7 +28,13 @@ Album Guesser is a web-based guessing game where players have to guess the corre
 1. Clone the repository:
    ```shell
    git clone https://github.com/your-username/Album_Guesser.git
-
+   ```
+2. Modify the .env_sample file by renaming it to .env and fill it in like this:
+   ```markdown
+    CLIENT_ID=your_spotify_client_id
+    CLIENT_SECRET=your_spotify_client_secret
+    ```
+- Make sure to rename the file to .env and upload your specific keys
 
 
 ## Walkthrough
